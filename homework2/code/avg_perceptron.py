@@ -5,6 +5,42 @@ import numpy as np
 from utils import compute_errors
 
 
+class AveragedPerceptron(object):
+    def __init__(self):
+        self.num_iterations = 64
+
+    def _prep_examples(self, X, y):
+        return zip(X, y)
+
+    def fit(self, training_data, training_labels):
+        examples = self._prep_examples(training_data, training_labels)
+        weights = np.zeros(examples[0][0].shape)
+        cweights = np.zeros(examples[0][0].shape)
+        bias = 0
+        counter = 1
+
+        for iteration in range(0, self.num_iterations):
+            np.random.shuffle(examples)
+            for features, label in examples:
+                if np.dot(features, weights) <= 0:
+                    weights = weights + (label * features)
+                    cweights = cweights + (label * counter * features)
+                counter += 1
+
+        self.model = weights - ((1/counter) * cweights)
+
+    def predict(self, test_data):
+        return np.array([self._predict_one(features)
+                         for features in test_data])
+
+    def _predict_one(self, features):
+        activation = np.dot(features, self.model)
+        if activation > 0:
+            return 1
+        else:
+            return -1
+
+
 def avg_perceptron_fit(num_iterations, examples):
     weights = np.zeros(examples[0][0].shape)
     cweights = np.zeros(examples[0][0].shape)
