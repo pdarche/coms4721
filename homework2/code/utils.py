@@ -1,6 +1,7 @@
 from __future__ import division
 
 import itertools
+import numpy as np
 
 
 def compute_errors(predictions, labels):
@@ -27,7 +28,7 @@ def combinations(x):
 
 def expand_features(original_features):
     squared = original_features ** 2
-    combos = combinations(features)
+    combos = combinations(original_features)
     return np.concatenate([original_features, squared, combos])
 
 
@@ -49,12 +50,12 @@ def k_fold_cross_validation(data, labels, num_folds):
         yield (training, test)
 
 
-def score_models(models):
+def score_models(models, training_data, training_labels):
     for name, Model in models:
         errors = []
         classifiers = []
         num_folds = 10
-        for training, testing in k_fold_cross_validation(spam_data, spam_labels, num_folds):
+        for training, testing in k_fold_cross_validation(training_data, training_labels, num_folds):
             if 'Expanded' in name:
                 training['data'] = np.array([expand_features(x) for x in training['data']])
                 testing['data'] = np.array([expand_features(x) for x in testing['data']])
@@ -94,7 +95,7 @@ def best_classfier_test_error_rate(scored_models, test_data, test_labels):
         test_data = np.array([expand_features(x) for x in test_data])
     test_error = test_scikits_model(clf, test_data, test_labels)
 
-    print "%s Testing Error Rate %.4f" % (clf_name, clf_error)
+    print "%s Testing Error Rate %.4f" % (clf_name, test_error)
 
 
 
