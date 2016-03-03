@@ -1,0 +1,63 @@
+\documentclass[twoside,11pt]{homework}
+
+\coursename{COMS 4721 Spring 2016} 
+
+\studentname{Peter Darche}       % YOUR NAME GOES HERE
+\studentmail{pmd2139@columbia.edu}   % YOUR UNI GOES HERE
+\homeworknumber{2}               % THE HOMEWORK NUMBER GOES HERE
+\collaborators{none}             % THE UNI'S OF STUDENTS YOU DISCUSSED WITH
+
+\usepackage{bm}
+\usepackage{enumitem}
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+The Perceptron convergence theorem stated in the homework can be thought of as the normalization of the statement given in class. Accordingly, by dividing $\bm{w_*}$ by $\|\bm{w_*}\|_2$ you get 1 or $\bm{u_*}$.  Similarly, because we're normalizing, $\gamma$ becomes $\frac{1}{\bm{\|w_*\|_2}}$ or the minimum margin.  The shortest distance from a data point $\bm{x}$ to the homogeneous hyperplane with normal vector $\bm{w_*}$ is the minimum margin $\frac{1}{\bm{\|w_*\|_2}}$
+
+\section*{Problem 2}
+
+\begin{enumerate}[label=\Alph*]
+\item Because the generative model uses gaussian class conditional distributions, subtracting the mean will only serve to shift all of the distributions, but not change their probabilities, so centering will not affect the classifier.  Because standardization changes the shapes of the distributions, it does affect the classifier.
+\item Like the generative model, centering the data will also not affect the Euclidean distance 1-NN classifier.  This is because the algorithm only cares about the relative differences in Euclidean distances between points and these relative distances don't change when you change the mean.  Again, changing the mean shifts the data, but it preserves the relative distances between points so the classifier is not affected.  Again, because standardization changes the relative distances between the points, classification is affected by standardization.
+\item For decision trees, centering would not affect the classifier because the algorithm is looking for the point to maximally reduce uncertainty and so checks all the possible boundaries.  Because the locations of boundaries aren't affected by shifting the data, the algorithm ins't affected.
+\item Because in EMR we care about the shape of the distribution, rather than the centering, changing the centering won't affect the classifier.
+\end{enumerate}
+
+\section*{Problem 4}
+\textbf{Cross-validation error rates for all methods}:
+\begin{center}
+  \begin{tabular}{c  c  c  c  c  c  c }
+    & Avg Perceptron
+    & Log Regression
+    & QDA
+    & LDA
+    & Avg Perceptron Exp
+    & Log Regression Exp
+    \\
+    & 0.1389
+    & 0.0815
+    & 0.1637
+    & 0.1076
+    & 0.3255
+    & 0.0756
+  \end{tabular}
+\end{center}
+
+\textbf{Training error rate of the classifier learned by the selected method (and state which method was chosen)}:
+\begin{center}
+\begin{tabular}{  c  c } 
+Method & Training Error \\
+Logistic Regression with expanded features & 0.0456 \\ 
+\end{tabular}
+\end{center}
+
+\textbf{Test error rate for the learned classifier:}
+\begin{center}
+\begin{tabular}{  c  c } 
+Method & Testing Error \\
+Logistic Regression with expanded features & 0.0749 \\ 
+\end{tabular}
+\end{center}
+
+\end{document}

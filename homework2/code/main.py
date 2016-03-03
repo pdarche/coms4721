@@ -33,7 +33,7 @@ if __name__ == '__main__':
         ('Averaged Perceptron Expanded', AveragedPerceptron),
         ('Logistic Regression Expanded', LogisticRegression)
     ]
-    print "Scoring Models"
+    print "Scoring Models (this will take about 10 mins)"
     scored_models = list(score_models(models, spam['data'], spam['labels']))
 
     # 1. Cross-validation error rates for all methods
