@@ -1,0 +1,167 @@
+\documentclass[twoside,11pt]{homework}
+
+\coursename{COMS 4772 Fall 2015} % DON'T CHANGE THIS
+
+\studentname{Name Surname}       % YOUR NAME GOES HERE
+\studentmail{uni@columbia.edu}   % YOUR UNI GOES HERE
+\homeworknumber{1}               % THE HOMEWORK NUMBER GOES HERE
+\collaborators{none}             % THE UNI'S OF STUDENTS YOU DISCUSSED WITH
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+
+% YOUR SOLUTION GOES HERE
+
+% SOME EXAMPLE LATEX CODE BELOW (DON'T INCLUDE IN YOUR ACTUAL SUBMISSION!)
+\textbf{Examples of blackboard and calligraphic letters}: $\bbR^d
+\supset \bbS^{d-1}$, $\cC \subset \cB$.
+We usually reserve $\bbR$ for the real numbers, $\bbN$ for the natural
+numbers, $\bbZ$ for the integers, etc.
+These are defined through macros
+\texttt{$\backslash$bbR},
+\texttt{$\backslash$bbS},
+\texttt{$\backslash$cC},
+\texttt{$\backslash$cB},
+etc.
+
+\textbf{Examples of bold-faced letters}, perhaps suitable for matrix
+and vectors:
+\begin{equation}
+  L(\bfx,\bflambda) = f(\bfx) - \dotp{\bflambda,\bfA\bfx-\bfb} .
+  \label{eq:lagrangian}
+\end{equation}
+These are defined through macros
+\texttt{$\backslash$bfx},
+\texttt{$\backslash$bflambda},
+\texttt{$\backslash$bfA},
+\texttt{$\backslash$bfb},
+etc.
+The inner product uses the
+\texttt{$\backslash$dotp}
+macro.
+
+\textbf{Example of a math operator}:
+\[
+  \var(X) = \bbE X^2 - (\bbE X)^2 .
+\]
+The
+\texttt{$\backslash$var}
+macro is defined using
+\texttt{$\backslash$DeclareMathOperator}.
+
+\textbf{Example of references}: the Lagrangian is given in
+Eq.~\eqref{eq:lagrangian}, and Theorem~\ref{thm:euclid} is
+interesting.
+If the references show up as question marks, check that the reference
+is valid, and then also just try running the \LaTeX compiler once or
+twice more.
+
+\textbf{Example of adaptively-sized parentheses}:
+using the \texttt{$\backslash$Parens} macro,
+\[
+  \left(\prod_{i=1}^n x_i\right)^{1/n}
+  + \left(\prod_{i=1}^n y_i\right)^{1/n}
+  \leq
+  \Parens{
+    \prod_{i=1}^n (x_i + y_i)
+  }^{1/n}
+\]
+(also have macros for \texttt{$\backslash$Braces},
+\texttt{$\backslash$Brackets}, \texttt{$\backslash$Norm}, etc.).
+
+\textbf{Example of aligned equations}:
+\begin{align}
+  \Pr(X = 1 \,|\, Y = 1)
+  & = \frac{\Pr(X = 1 \,\wedge\, Y = 1)}{\Pr(Y = 1)}
+  \notag \\
+  & =
+  \underbrace{
+    \frac{\Pr(Y = 1 \,|\, X = 1) \cdot \Pr(X = 1)}{\Pr(Y = 1)}
+  }_{\text{Usual expression for Bayes' rule}}
+  .
+  \label{eq:bayes-rule}
+\end{align}
+
+\textbf{Example of a theorem}:
+\begin{theorem}[Euclid]
+  \label{thm:euclid}
+  There are infinitely many primes.
+\end{theorem}
+\begin{proof}[Euclid's proof]
+  There is at least one prime, namely $2$.
+  Now pick any finite list of primes $p_1, p_2, \dotsc, p_n$.
+  It suffices to show that there is another prime not on the list.
+  Let $p := \prod_{i=1}^n p_i + 1$, which is not any of the primes on
+  the list.
+  If $p$ is prime, then we're done.
+  So suppose instead that $p$ is not prime.
+  Then there is prime $q$ which divides $p$.
+  If $q$ is one of the primes on the list, then it would divide $p -
+  \prod_{i=1}^n p_i = 1$, which is impossible.
+  Therefore $q$ is not one of the $n$ primes in the list, so we're
+  done.
+\end{proof}
+
+\textbf{Here is a centered table}:
+\begin{center}
+  \begin{tabular}{c||c|c|c|c}
+    & A
+    & B
+    & C
+    & D \\
+    \hline
+    \hline
+    $1$
+    & entries
+    & in
+    & a
+    & table
+    \\
+    \hline
+    $2$
+    & more
+    & entries
+    & more
+    & entries
+  \end{tabular}
+\end{center}
+
+\textbf{Here is an unordered list}:
+\begin{itemize}
+  \item
+    An item
+
+  \item
+    Another item
+
+\end{itemize}
+
+\textbf{Here is an ordered list}:
+\begin{enumerate}
+  \item
+    First item
+
+  \item
+    Second item
+
+\end{enumerate}
+
+\section*{Problem 2}
+
+% YOUR SOLUTION GOES HERE
+
+\section*{Problem 3}
+
+% YOUR SOLUTION GOES HERE
+
+\section*{Problem 4}
+
+% YOUR SOLUTION GOES HERE
+
+\section*{Problem 5}
+
+% YOUR SOLUTION GOES HERE
+
+\end{document}
