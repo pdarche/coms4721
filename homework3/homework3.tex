@@ -1,24 +1,33 @@
 \documentclass[twoside,11pt]{homework}
 
-\coursename{COMS 4772 Fall 2015} % DON'T CHANGE THIS
+\coursename{COMS 4721 Fall 2016}
 
-\studentname{Name Surname}       % YOUR NAME GOES HERE
-\studentmail{uni@columbia.edu}   % YOUR UNI GOES HERE
-\homeworknumber{1}               % THE HOMEWORK NUMBER GOES HERE
-\collaborators{none}             % THE UNI'S OF STUDENTS YOU DISCUSSED WITH
+\studentname{Peter Darche}       % YOUR NAME GOES HERE
+\studentmail{pmd2139@columbia.edu}   % YOUR UNI GOES HERE
+\homeworknumber{3}               % THE HOMEWORK NUMBER GOES HERE
+\collaborators{gs2842@columbia.edu} % THE UNI'S OF STUDENTS YOU DISCUSSED WITH
 
 \begin{document}
 \maketitle
 
 \section*{Problem 1}
+\paragraph{(a)} We're trying to find the value of z that minimizes the function: $ \mathbb{E}[\ell_{exp}(z)] $ To do that we need to take the derivative of the expectation, set it equal to zero and solve for z.  
+$$\mu\exp^{-z} + (1 - \mu)\exp^z $$
+$$ \mu\exp^{-z} = (1 - \mu)\exp^z $$
+$$ \log\mu - z = \log(1 - \mu) + z $$
+$$ 2z = \frac{\log\mu}{\log(1 - \mu)} $$
+$$ z = \frac{1}{2} \bigg(\frac{\log\mu}{\log(1 - \mu)}\bigg) $$
+
+
+\paragraph{(b)} The value z that minimizes $ \mathbb{E}[|Y-z|] $ is the median of $Y$'s distribution.  We'd like to minimize the probability that $z$ differs from $Y$.  To do this we'd choose the $z$ so that the probability that $P(Y<z) = P(Y>z)$.  Doing things thusly makes the probabilities that z is greater and lesser than Y cancel each other out and gives us the smallest expected difference.  The value of z where $P(Y<z) = P(Y>z)$ just is the median of Y's distribution.
 
 \section*{Problem 2}
 
 \paragraph{(a)} $Q_j$ is a Bernoulli random variable with parameter $p$ equal to $P(y|x \geq j/n)$.  That is, the $jth$ $Q$ is a Bernoulli distribution whose probability depends on the random variable $P$, as $P$ is a joint random variable of X and Y.  The two are connected because $Q_j$ is a function of $X$ and $Z$ and $Z$ is a function of $Y, J,$ and $M$.
 
-\paragraph{(b)} The optimal binary classifier for each j is function of j and the random variables $X$ and $Y$. Up to (but not including) $j=5$, $Y$ (regardless of $X$) is greater than or equal to $j/m$, so the optimal classifier should return $1$.  From $j=5$ to $12$ optimality depends on $X$.  For $X = a$, $Y$ is less than $j/m$ and therefore the optimal predictor is 0.  All values of $Y = b$ in $j=5 to 12$ are greater than $j/m$ so the optimal predictor is $1$. For $j \geq 13$ again Y values for both X values are less than $j/m$ so the optimal classifier is 0.\\
+\paragraph{(b)} The optimal binary classifier for each j is function of j and the random variables $X$ and $Y$. Up to (but not including) $j=5$, $Y$ (regardless of $X$) is greater than or equal to $j/m$, so the optimal classifier should return $1$.  From $j=5$ to $12$ optimality depends on $X$.  For $X = a$, $Y$ is less than $j/m$ and therefore the optimal predictor is 0.  All values of $Y = b$ in $j=5$ to $12$ are greater than $j/m$ so the optimal predictor is $1$. For $j \geq 13$ again Y values for both X values are less than $j/m$ so the optimal classifier is 0.\\
 
-More tersely:
+More concisely:
 
 For $j_{1,4}$, $f_j^*$  is: 
 $$f_j^*(x) = 1$$ For $j_{5,12}$ it is:
@@ -31,11 +40,13 @@ $$f_j^*(x) = 0$$
 \paragraph{(c)}
 The optimal classifier minimizes $\mathbb{E}[|Y - g(X)|]$.  To find this, we need to determine the expected value of $g(x)$.  Because $g(X)$ depends on the the value of $X$, the overall expected value will be the sum of the two cases weighted by their probabilities.  We'd have:
 
-$$ \mathbb{E}[|Y-g(X)|] = \frac{1}{2} \mathbb{E}[|Y − g(X)|| x = a] + \frac{1}{2} \mathbb{E}[|Y − g(X)|| x = b] $$
+$$ 
+\mathbb{E}[|Y - g(X)|] = \frac{1}{2} \mathbb{E}[|Y - g(X)|| x = a] + \frac{1}{2} \mathbb{E}[|Y - g(X)|| x = b] 
+$$
 
 The expected values of $g(x)$ for $X = a$ and $X = b$ are $.25$ and $.75$ respectively.  This means the expected absolute loss is:
 
-$$ \mathbb{E}[|Y-g(X)|] = \frac{1}{2} \mathbb{E}[|Y − .25|| x = a] + \frac{1}{2} \mathbb{E}[|Y − .75|| x = b]  = \frac{1}{16}$$
+$$ \mathbb{E}[|Y - g(X)|] = \frac{1}{2} \mathbb{E}[|Y - .25|| x = a] + \frac{1}{2} \mathbb{E}[|Y - .75|| x = b]  = \frac{1}{16}$$
 
 
 \section*{Problem 3}
@@ -47,7 +58,7 @@ $$ \mathbb{E}[|Y-g(X)|] = \frac{1}{2} \mathbb{E}[|Y − .25|| x = a] + \frac{1}{
 \paragraph{(c)} I used three models from the scikit-learn linear models package: Lasso, Lars, and Orthogonal Matching Pursuit.  The selected columns were as follows: 
 Lasso: 'RM', 'PTRATIO', 'LSTAT' 
 Lars: 'RM', 'PTRATIO', 'LSTAT' 
-OMP: 'ZN', 'INDUS', 'PTRATIO'.  These all make reasonable sense.  The first thin you hear about when people describe houses is the number of bedrooms, often followed by the quality of the school system (which teacher to pupil ration might be a proxy for).
+OMP: 'ZN', 'INDUS', 'PTRATIO'.  These all seem reasonable.  The first thing you hear about when people describe houses is the number of bedrooms, often followed by the quality of the school system (which teacher to pupil ration might be a proxy for).
 
 
 \end{document}
