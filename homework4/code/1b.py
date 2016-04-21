@@ -52,16 +52,6 @@ def optimize_B(U, V, B, C, mu, A):
     return np.array(Bis)
 
 
-def optimize_B(U, V, B, C, mu, A):
-    Bis = []
-    for i in range(m):
-        b = 0
-        for j in range(n):
-            b += -(np.dot(U[i], V[j]) + C[j] + mu - A[i,j])
-        Bis.append(b / n)
-    return np.array(Bis)
-
-
 def optimize_C(U, V, B, C, mu, A):
     Cjs = []
     for j in range(n):
